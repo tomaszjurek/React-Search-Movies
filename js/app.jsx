@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   searchMovies = () => {
-    fetch(`http://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
