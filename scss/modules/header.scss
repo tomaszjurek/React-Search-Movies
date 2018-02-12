@@ -1,0 +1,16 @@
+.header {
+  padding: 10px 25px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  background-color: $headerColor;
+}
+
+.input-group {
+  width: 50% !important;
+}
+
+.btn {
+  background-color: $buttonColor !important;
+}
