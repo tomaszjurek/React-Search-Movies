@@ -6,7 +6,43 @@ html, body {
   position: relative;
 }
 
-.content {
-  padding: 60px 20px;
+body {
   background-color: $contentColor;
+}
+
+.content {
+  padding: 60px 0;
+
+  .movie {
+    margin: 30px 0;
+    &:hover {
+      background-color: darken($contentColor, 5%);
+      -webkit-box-shadow: 5px 5px 13px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 5px 5px 13px 0px rgba(0,0,0,0.75);
+      box-shadow: 5px 5px 13px 0px rgba(0,0,0,0.75);
+      transition: box-shadow 0.5s;
+      transition: background-color 0.5s ;
+
+    }
+  }
+
+  .poster {
+    border: 2px black solid;
+    border-radius: 5px;
+    height: 300px;
+    width: 200px;
+    margin: 10px 10px;
+  }
+
+  .overview {
+    margin: 5px 10px;
+  }
+
+  .title {
+    margin: 10px auto;
+  }
+
+  .details {
+    margin: 5px 10px;
+  }
 }
