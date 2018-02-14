@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       isData: false,
       filterText: "",
-      data: {}
+      data: []
     };
   }
 
@@ -23,7 +23,7 @@ class App extends React.Component {
     }).then(data => {
       this.setState({
         isData: true,
-        data: data
+        data: data.results
       })
     })
   }
