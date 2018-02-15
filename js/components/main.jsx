@@ -1,18 +1,6 @@
 import React from 'react';
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false
-    };
-  }
-
-  showDetails = (e, index) => {
-    this.setState({
-      show: !this.state.show
-    })
-  }
 
   render() {
     return this.props.isData ? (
@@ -20,7 +8,7 @@ class Main extends React.Component {
           {
             this.props.data.map((element,e,index) => {
               return (
-                <div className = "movie" key = {element.id} onClick = {() => this.showDetails(e,index)}>
+                <div className = "movie" key = {element.id} onClick = {() => this.props.showDetails(element.id,e)}>
                   <div className = "row">
                     <div className = "col col-xl-3">
                       <img className = "poster" src = {'https://image.tmdb.org/t/p/w200' + element.poster_path}></img>
@@ -30,12 +18,11 @@ class Main extends React.Component {
                       <p className = "overview">{element.overview}</p>
                     </div>
                   </div>
-                  { this.state.show ? (
-                    <div className = "row details justify-content-center">
+                  {
+                    <div className = "row details justify-content-center" style = {{display: this.props.show ? "flex" : "none"}}>
                       <span><strong>Popularity:</strong> {element.popularity}</span>
                       <span><strong>Vote average:</strong>{element.vote_average}</span>
                     </div>
-                  ) : (<div></div>)
                   }
                 </div>
               )

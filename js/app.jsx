@@ -9,7 +9,8 @@ class App extends React.Component {
     this.state = {
       isData: false,
       filterText: "",
-      data: []
+      data: [],
+      show: false
     };
   }
 
@@ -28,6 +29,13 @@ class App extends React.Component {
     })
   }
 
+  showDetails = (e, index) => {
+    console.log(e , index);
+    this.setState({
+      show: !this.state.show
+    })
+  }
+
   changeHandler = (event) =>
   this.setState({ [event.target.name]: event.target.value })
 
@@ -35,7 +43,7 @@ class App extends React.Component {
     return (
       <div>
         <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText}></Header>
-        <Main isData = {this.state.isData} data = {this.state.data}></Main>
+        <Main isData = {this.state.isData} data = {this.state.data} showDetails = {this.showDetails} show = {this.state.show}></Main>
       </div>
     );
   }
