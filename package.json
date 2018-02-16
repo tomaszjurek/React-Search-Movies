@@ -20,7 +20,9 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "react": "^15.6.2",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^15.6.2",
+    "scroll-progress-react": "^0.1.4",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
