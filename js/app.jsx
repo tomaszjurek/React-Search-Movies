@@ -9,8 +9,7 @@ class App extends React.Component {
     this.state = {
       isData: false,
       filterText: "",
-      data: [],
-      show: false
+      datas: null
     };
   }
 
@@ -24,17 +23,31 @@ class App extends React.Component {
     }).then(data => {
       this.setState({
         isData: true,
-        data: data.results
+        datas: data.results
       })
     })
   }
 
-  showDetails = (e, index) => {
-    console.log(e , index);
-    this.setState({
-      show: !this.state.show
+  showDetails = (id, movieIndex) => {
+    console.log(id, movieIndex);
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=5f816d92be36940507e6b52e3f14ab84`).then(response =>{
+      if(response && response.ok){
+        return response.json();
+      }else{
+        console.log('Błąd połączenia!');
+      }
+    }).then(data => {
+      let datas = this.state.datas;
+      datas[movieIndex].genres = data.genres;
+      datas[movieIndex].imdb_link = `http://www.imdb.com/title/${id}/mediaviewer/rm1804016896`;
+      datas[movieIndex].production_countries = data.production_countries;
+      datas[movieIndex].production_companies = data.production_companies;
+      this.setState({
+        datas
+      });
     })
   }
+
 
   changeHandler = (event) =>
   this.setState({ [event.target.name]: event.target.value })
@@ -43,7 +56,7 @@ class App extends React.Component {
     return (
       <div>
         <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText}></Header>
-        <Main isData = {this.state.isData} data = {this.state.data} showDetails = {this.showDetails} show = {this.state.show}></Main>
+        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails}></Main>
       </div>
     );
   }
