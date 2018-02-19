@@ -1,6 +1,9 @@
 import React from 'react';
 
 class Main extends React.Component {
+  constructor(props) {
+  super(props);
+}
 
   render() {
     return this.props.isData ? (
@@ -10,10 +13,10 @@ class Main extends React.Component {
               return (
                 <div className = "movie" key = {element.id} onClick = {() => this.props.showDetails(element.id,index)}>
                   <div className = "row">
-                    <div className = "col col-xl-2">
-                      <img className = "poster img-thumbnail" src = {'https://image.tmdb.org/t/p/w200' + element.poster_path}></img>
+                    <div className = "col col-xl-2 col-md-3 col-sm-4 col-xs-4">
+                      <img className = "poster img-thumbnail" src = {element.poster_path !== null ? ('https://image.tmdb.org/t/p/w200' + element.poster_path) : ('./img/no_image.png')}></img>
                     </div>
-                    <div className = "col col-xl-10 ">
+                    <div className = "col col-xl-10 col-md-9 col-sm-8 col-xs-8">
                       <h1 className = "title">{element.title}</h1>
                       <p className = "overview">{element.overview}</p>
                     </div>
@@ -25,22 +28,20 @@ class Main extends React.Component {
                       <p><strong>Vote average: </strong>{element.vote_average}</p>
                     </div>
                     <div>
-                      {/* { element.genres !== undefined &&
-                      <section>
-                      <h6>: <ul>{element.genres.map((genre, index) =>
-                        <li key={genre.id}><strong>{index===0 ? genre.name : `, ${genre.name}`}</strong></li>)}</ul>
-                      </h6>
-                      <h6>: <ul>{element.production_countries.map((country, index) =>
-                        <li key={country.iso_3166_1}><strong>{index===0 ? country.name : `, ${country.name}`}</strong></li>)}</ul>
-                      </h6>
-                      <h6>: <ul>{element.production_companies.map((company, index) =>
-                        <li key={company.id}><strong>{index===0 ? company.name : `, ${company.name}`}</strong></li>)}</ul>
-                      </h6>
-                      <h6>IMDB: <a href={element.imdb_link}>
-                        {element.imdb_link.split("//")[1]}
-                      </a></h6>
-                    </section>
-                      } */}
+                      { element.genres !== undefined &&
+                      <div className = "more-details">
+                      <ul><strong>Genres:</strong> {element.genres.map((genre, index) =>
+                        <li key={genre.id}>{index >= 1 ? `, ${genre.name}` : genre.name}</li>)}
+                      </ul>
+                      <ul><strong>Production Countries:</strong> {element.production_countries.map((country, index) =>
+                        <li key={country.iso_3166_1}>{index >= 1 ? `, ${country.name}` : country.name}</li>)}
+                      </ul>
+                      <ul><strong>Production Companies:</strong> {element.production_companies.map((company, index) =>
+                        <li key={company.id}>{index >= 1 ? `, ${company.name}` : company.name}</li>)}
+                      </ul>
+                      <ul><strong>IMDB:</strong> <a href={element.imdb_link}>Click!</a></ul>
+                    </div>
+                      }
                     </div>
                 </div>
               )
