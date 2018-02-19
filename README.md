@@ -1,5 +1,5 @@
 # React-Search-Movies
-Next project, which is built on React. You can search the movie database. There will be covers,cast and many more information there about movies.
+Next project, which is built on React. For now You can search the movie database. In next updates I will add languages selection, sorting and tv series search.
 
 ## Live preview
 https://tomaszjurek.github.io/React-Search-Movies/
