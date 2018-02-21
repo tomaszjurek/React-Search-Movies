@@ -1,5 +1,7 @@
 # React-Search-Movies
-Next project, which is built on React. For now You can search the movie database. In next updates I will add languages selection, sorting and tv series search.
+Next project, which is built on React. You can search the movie database which is fetched from MovieDB API.
+Right now You can sort movies, change language for english or polish. Also if You scroll down, more movies will show up (infinite scroll) and if You click on one of them there will be more details about this movie.
+In next updates I will add tv series search, better RWD and design of the page.
 
 ## Live preview
 https://tomaszjurek.github.io/React-Search-Movies/
