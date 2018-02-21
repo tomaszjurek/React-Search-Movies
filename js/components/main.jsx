@@ -22,24 +22,24 @@ class Main extends React.Component {
                     </div>
                   </div>
                     <div className = "row details">
-                      <p><strong>Release Date: </strong>{element.release_date}</p>
-                      <p><strong>Popularity: </strong>{element.popularity}</p>
-                      <p><strong>Vote Count: </strong>{element.vote_count}</p>
-                      <p><strong>Vote average: </strong>{element.vote_average}</p>
+                      <p><strong>{this.props.langText.releaseDate} </strong>{element.release_date}</p>
+                      <p><strong>{this.props.langText.popularity} </strong>{element.popularity}</p>
+                      <p><strong>{this.props.langText.voteCount} </strong>{element.vote_count}</p>
+                      <p><strong>{this.props.langText.voteAverage}</strong>{element.vote_average}</p>
                     </div>
                     <div>
                       { element.genres !== undefined &&
                       <div className = "more-details">
-                      <ul><strong>Genres:</strong> {element.genres.map((genre, index) =>
+                      <ul><strong>{this.props.langText.genres}</strong> {element.genres.map((genre, index) =>
                         <li key={genre.id}>{index >= 1 ? `, ${genre.name}` : genre.name}</li>)}
                       </ul>
-                      <ul><strong>Production Countries:</strong> {element.production_countries.map((country, index) =>
+                      <ul><strong>{this.props.langText.productionCountries}</strong> {element.production_countries.map((country, index) =>
                         <li key={country.iso_3166_1}>{index >= 1 ? `, ${country.name}` : country.name}</li>)}
                       </ul>
-                      <ul><strong>Production Companies:</strong> {element.production_companies.map((company, index) =>
+                      <ul><strong>{this.props.langText.productionCompanies}</strong> {element.production_companies.map((company, index) =>
                         <li key={company.id}>{index >= 1 ? `, ${company.name}` : company.name}</li>)}
                       </ul>
-                      <ul><strong>IMDB:</strong> <a href={element.imdb_link}>Click!</a></ul>
+                      <ul><strong>IMDB:</strong> <a href={element.imdb_link}>{this.props.langText.imdb}</a></ul>
                     </div>
                       }
                     </div>

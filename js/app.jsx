@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header.jsx';
 import Main from './components/main.jsx';
+import {langText} from "./langText.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +11,8 @@ class App extends React.Component {
       isData: false,
       filterText: "",
       datas: null,
-      moreDatas: null,
-      page: 1
+      page: 1,
+      langText: langText[0]
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -39,8 +40,22 @@ class App extends React.Component {
     }
   }
 
+  sortingMovies = (event) => {
+    event.preventDefault();
+    if (this.state.datas) {
+      let datas = this.state.datas.sort((a, b) => {
+        if (a.title < b.title) return -1;
+        if (b.title < a.title) return 1;
+        return 0;
+      });
+      this.setState({
+        datas
+      });
+    }
+  }
+
   moreMovies = () => {
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&page=${this.state.page}`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&page=${this.state.page}&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
@@ -57,21 +72,6 @@ class App extends React.Component {
       }
     })
 
-  }
-
-  searchMovies = () => {
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}`).then(response =>{
-      if(response && response.ok){
-        return response.json();
-      }else{
-        console.log('Błąd połączenia!');
-      }
-    }).then(data => {
-      this.setState({
-        isData: true,
-        datas: data.results
-      })
-    })
   }
 
   showDetails = (id, movieIndex) => {
@@ -93,15 +93,47 @@ class App extends React.Component {
     })
   }
 
-
   changeHandler = (event) =>
   this.setState({ [event.target.name]: event.target.value })
+
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.searchMovies();
+    }
+  }
+
+  selectChange = (event) => {
+    this.setState({
+      langText: langText[event.target.value],
+      [event.target.name]: event.target.value,
+    }, function() {
+        if (this.state.filterText !== "") {
+        this.searchMovies()
+        }
+      });
+  }
+
+  searchMovies = () => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&language=${this.state.langText.apiLang}`).then(response =>{
+      if(response && response.ok){
+        return response.json();
+      }else{
+        console.log('Błąd połączenia!');
+      }
+    }).then(data => {
+      this.setState({
+        isData: true,
+        datas: data.results
+      })
+      window.scrollTo(0, 0);
+    })
+  }
 
   render() {
     return (
       <div>
-        <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText}></Header>
-        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page}></Main>
+        <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText} handleKeyPress = {this.handleKeyPress} sortingMovies = {this.sortingMovies} selectChange = {this.selectChange} lang = {this.state.lang} langText = {this.state.langText}></Header>
+        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page} langText = {this.state.langText}></Main>
       </div>
     );
   }
