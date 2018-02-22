@@ -1,5 +1,5 @@
 .header {
-  padding: 10px 25px;
+  padding: 10px 5px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -9,5 +9,17 @@
 }
 
 .btn {
-  background-color: $buttonColor !important;
+  background-color: $contentColor !important;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.align-right {
+  text-align: right;
+}
+
+@media only screen and (max-width: 575px) {
+  .margin-top-small {
+	  margin-top: 10px;
+  }
 }
