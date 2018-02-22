@@ -36,17 +36,17 @@ export const langText = [
   {
     id: 2,
     apiLang: "de",
-    search: "",
-    searchTitles: "",
-    sorting: "",
-    releaseDate: "",
-    popularity: "",
-    voteCount: "",
-    voteAverage: "",
-    genres: "",
-    productionCountries: "",
-    productionCompanies: "",
-    whatToDo: "",
-    imdb: ""
+    search: "Suche",
+    searchTitles: "Suche titel...",
+    sorting: "Sortieren A - Z",
+    releaseDate: "Veröffentlichungsdatum: ",
+    popularity: "Popularität: ",
+    voteCount: "Anzahl der Stimmen: ",
+    voteAverage: "Durchschnittliche Stimmen: ",
+    genres: "Filmgenre: ",
+    productionCountries: "Produktionsland: ",
+    productionCompanies: "Produktionsstudios: ",
+    whatToDo: "Verwenden Sie Stichworte, um den Titel zu finden, und klicken Sie dann auf die Schaltfläche Suchen oder drücken Sie die Eingabetaste...",
+    imdb: "Klicken!"
   }
 ]

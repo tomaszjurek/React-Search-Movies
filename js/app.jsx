@@ -51,6 +51,7 @@ class App extends React.Component {
       this.setState({
         datas
       });
+      window.scrollTo(0, 0);
     }
   }
 
@@ -75,7 +76,7 @@ class App extends React.Component {
   }
 
   showDetails = (id, movieIndex) => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=5f816d92be36940507e6b52e3f14ab84`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=5f816d92be36940507e6b52e3f14ab84&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
@@ -113,7 +114,7 @@ class App extends React.Component {
       });
   }
 
-  searchMovies = () => {
+  searchMovies = () => { this.state.filterText !== "" &&
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();

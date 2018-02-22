@@ -13,10 +13,10 @@ class Main extends React.Component {
               return (
                 <div className = "movie" key = {element.id} onClick = {() => this.props.showDetails(element.id,index)}>
                   <div className = "row">
-                    <div className = "col col-xl-2 col-md-3 col-sm-4 col-xs-4">
+                    <div className = "col-xl-2 col-md-3 col-sm-4 col-xs-4">
                       <img className = "poster img-thumbnail" src = {element.poster_path !== null ? ('https://image.tmdb.org/t/p/w200' + element.poster_path) : ('./img/no_image.png')}></img>
                     </div>
-                    <div className = "col col-xl-10 col-md-9 col-sm-8 col-xs-8">
+                    <div className = "col-xl-9 col-md-8 col-sm-7 col-xs-7">
                       <h1 className = "title">{element.title}</h1>
                       <p className = "overview">{element.overview}</p>
                     </div>
