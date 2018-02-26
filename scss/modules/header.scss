@@ -11,7 +11,14 @@
 .btn {
   background-color: $contentColor !important;
   margin-left: 10px;
-  display: inline-block;
+}
+
+.select-style {
+  height: 37.54px;
+}
+
+.select-type {
+  border-right: 1px black solid;
 }
 
 .align-right {
