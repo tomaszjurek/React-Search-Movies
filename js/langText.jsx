@@ -12,7 +12,6 @@ export const langText = [
     genres: "Genres: ",
     productionCountries: "Production Countries: ",
     productionCompanies: "Production Companies: ",
-    whatToDo: "Just type the title and click search button or press Enter...",
     imdb: "Click!"
   },
 
@@ -29,7 +28,6 @@ export const langText = [
     genres: "Gatunek: ",
     productionCountries: "Kraj produkcji: ",
     productionCompanies: "Studia produkcyjne: ",
-    whatToDo: "Wpisz szukany tytuł, a następnie kliknij Szukaj lub naciśnij Enter...",
     imdb: "Kliknij!"
   },
 
@@ -46,7 +44,23 @@ export const langText = [
     genres: "Filmgenre: ",
     productionCountries: "Produktionsland: ",
     productionCompanies: "Produktionsstudios: ",
-    whatToDo: "Verwenden Sie Stichworte, um den Titel zu finden, und klicken Sie dann auf die Schaltfläche Suchen oder drücken Sie die Eingabetaste...",
     imdb: "Klicken!"
+  },
+
+  {
+    id: 3,
+    apiLang: "es",
+    search: "",
+    searchTitles: "",
+    sorting: "",
+    releaseDate: "",
+    popularity: "",
+    voteCount: "",
+    voteAverage: "",
+    genres: "",
+    productionCountries: "",
+    productionCompanies: "",
+    whatToDo: "",
+    imdb: ""
   }
 ]

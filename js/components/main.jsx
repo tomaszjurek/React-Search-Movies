@@ -17,7 +17,7 @@ class Main extends React.Component {
                       <img className = "poster img-thumbnail" src = {element.poster_path !== null ? ('https://image.tmdb.org/t/p/w200' + element.poster_path) : ('./img/no_image.png')}></img>
                     </div>
                     <div className = "col-xl-9 col-md-8 col-sm-7 col-xs-7">
-                      <h1 className = "title">{element.title}</h1>
+                      <h1 className = "title">{this.props.type !== "tv" ? element.title : element.name}</h1>
                       <p className = "overview">{element.overview}</p>
                     </div>
                   </div>
@@ -33,13 +33,19 @@ class Main extends React.Component {
                       <ul><strong>{this.props.langText.genres}</strong> {element.genres.map((genre, index) =>
                         <li key={genre.id}>{index >= 1 ? `, ${genre.name}` : genre.name}</li>)}
                       </ul>
-                      <ul><strong>{this.props.langText.productionCountries}</strong> {element.production_countries.map((country, index) =>
-                        <li key={country.iso_3166_1}>{index >= 1 ? `, ${country.name}` : country.name}</li>)}
-                      </ul>
+
                       <ul><strong>{this.props.langText.productionCompanies}</strong> {element.production_companies.map((company, index) =>
                         <li key={company.id}>{index >= 1 ? `, ${company.name}` : company.name}</li>)}
                       </ul>
+
+                      { element.production_countries !== undefined &&
+                      <ul><strong>{this.props.langText.productionCountries}</strong> {element.production_countries.map((country, index) =>
+                          <li key={country.iso_3166_1}>{index >= 1 ? `, ${country.name}` : country.name}</li>)}
+                      </ul>
+                      }
+
                       <ul><strong>IMDB:</strong> <a href={element.imdb_link}>{this.props.langText.imdb}</a></ul>
+                      
                     </div>
                       }
                     </div>

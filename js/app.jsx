@@ -12,7 +12,8 @@ class App extends React.Component {
       filterText: "",
       datas: null,
       page: 1,
-      langText: langText[0]
+      langText: langText[0],
+      type: "movie"
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -56,7 +57,7 @@ class App extends React.Component {
   }
 
   moreMovies = () => {
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&page=${this.state.page}&language=${this.state.langText.apiLang}`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/search/${this.state.type}?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&page=${this.state.page}&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
@@ -76,7 +77,7 @@ class App extends React.Component {
   }
 
   showDetails = (id, movieIndex) => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=5f816d92be36940507e6b52e3f14ab84&language=${this.state.langText.apiLang}`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/${this.state.type}/${id}?api_key=5f816d92be36940507e6b52e3f14ab84&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
@@ -114,8 +115,19 @@ class App extends React.Component {
       });
   }
 
+  selectType = (event) => {
+    this.setState({
+      type: [event.target.value],
+      [event.target.name]: event.target.value,
+    }, function() {
+        if (this.state.filterText !== "") {
+        this.searchMovies()
+        }
+      });
+  }
+
   searchMovies = () => { this.state.filterText !== "" &&
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&language=${this.state.langText.apiLang}`).then(response =>{
+    fetch(`https://api.themoviedb.org/3/search/${this.state.type}?api_key=5f816d92be36940507e6b52e3f14ab84&query=${this.state.filterText}&language=${this.state.langText.apiLang}`).then(response =>{
       if(response && response.ok){
         return response.json();
       }else{
@@ -130,11 +142,26 @@ class App extends React.Component {
     })
   }
 
+  getTopRated = () => {
+    fetch(`https://api.themoviedb.org/3/${this.state.type}/top_rated?api_key=5f816d92be36940507e6b52e3f14ab84&page=${this.state.page}&language=${this.state.langText.apiLang}`).then(response =>{
+      if(response && response.ok){
+        return response.json();
+      }else{
+        console.log('Błąd połączenia!');
+      }
+    }).then(data => {
+      this.setState({
+        isData: true,
+        datas: data.results
+      })
+    })
+  }
+
   render() {
     return (
       <div>
-        <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText} handleKeyPress = {this.handleKeyPress} sortingMovies = {this.sortingMovies} selectChange = {this.selectChange} lang = {this.state.lang} langText = {this.state.langText}></Header>
-        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page} langText = {this.state.langText}></Main>
+        <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText} handleKeyPress = {this.handleKeyPress} sortingMovies = {this.sortingMovies} selectChange = {this.selectChange} lang = {this.state.lang} selectType = {this.selectType} type = {this.state.type}  langText = {this.state.langText}></Header>
+        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page} langText = {this.state.langText} type = {this.state.type}></Main>
       </div>
     );
   }
