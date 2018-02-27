@@ -11,6 +11,9 @@
 .btn {
   background-color: $contentColor !important;
   margin-left: 10px;
+  font-size: 0.8rem;
+  padding: .375rem .6rem;
+  width: 90px;
 }
 
 .select-style {
@@ -25,8 +28,29 @@
   text-align: right;
 }
 
+.progress-container {
+  background-color: rgba(150, 150, 150, 0.6);
+  height: 15px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+
+.progress-bar {
+  background-color: lighten($contentColor,15%);
+  height: 15px;
+  width: 0%;
+  z-index: 1000;
+}
+
 @media only screen and (max-width: 575px) {
+  body {
+    font-size: 70%;
+  }
   .margin-top-small {
 	  margin-top: 10px;
+  }
+  .progress-container, .progress-bar {
+    height: 10px;
   }
 }

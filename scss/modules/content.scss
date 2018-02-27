@@ -8,6 +8,12 @@ html, body {
 
 body {
   background-color: darken($headerColor,10%);
+  h1,h2,h3 {
+    text-align:center;
+  }
+  .welcome-text {
+    padding-top: 90px;
+  }
 }
 
 .content {
@@ -67,5 +73,31 @@ body {
 
   ul li {
     display: inline;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  body {
+    font-size: 90%;
+    text-align:center;
+    h1 {
+      font-size: 1.5rem;
+    }
+    .welcome-text {
+      padding: 120px 20px 0 20px;
+    }
+  }
+  .content {
+    margin-top: 100px;
+    .poster {
+      height: 150px;
+      width: 100px;
+    }
+    .title {
+      margin: 0;
+    }
+    .more-details {
+      text-align: left;
+    }
   }
 }
