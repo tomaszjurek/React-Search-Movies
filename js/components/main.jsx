@@ -44,8 +44,24 @@ class Main extends React.Component {
                       </ul>
                       }
 
+                      { element.episode_run_time !== undefined &&
+                        <ul><strong>{this.props.langText.runTime}</strong>{element.episode_run_time + " min"}</ul>
+                      }
+
+                      { element.number_of_seasons !== undefined &&
+                        <ul><strong>{this.props.langText.seasonsNumber}</strong>{element.number_of_seasons}</ul>
+                      }
+
+                      { element.number_of_episodes !== undefined &&
+                        <ul><strong>{this.props.langText.episodesNumber}</strong>{element.number_of_episodes}</ul>
+                      }
+
+                      { element.status !== undefined &&
+                        <ul><strong>{this.props.langText.status}</strong>{element.status}</ul>
+                      }
+
                       <ul><strong>IMDB:</strong> <a href={element.imdb_link}>{this.props.langText.imdb}</a></ul>
-                      
+
                     </div>
                       }
                     </div>
@@ -53,8 +69,9 @@ class Main extends React.Component {
               )
             })
           }
+          {this.props.isMoreData ? <h2>{this.props.langText.moreLoad}</h2> : <h2>{this.props.langText.noMoreLoad}</h2>}
       </div>
-    ) : (null)
+    ) : (<h3 className = "welcome-text">{this.props.langText.welcome}</h3>)
   }
 }
 
