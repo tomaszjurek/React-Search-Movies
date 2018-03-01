@@ -18,12 +18,15 @@ class Main extends React.Component {
                     </div>
                     <div className = "col-xl-9 col-md-8 col-sm-7 col-xs-7">
                       <h1 className = "title">{this.props.type !== "tv" ? element.title : element.name}</h1>
-                      <p className = "overview">{element.overview}</p>
+                      { element.overview !== "" ? (
+                      <p className = "overview">{element.overview}</p>) : (
+                      <p className = "overview">{this.props.langText.noData}</p>)}
                     </div>
                   </div>
                     <div className = "row details">
-                      <p><strong>{this.props.langText.releaseDate} </strong>{element.release_date}</p>
-                      <p><strong>{this.props.langText.popularity} </strong>{element.popularity}</p>
+                      { element.release_date !== undefined &&
+                      <p><strong>{this.props.langText.releaseDate} </strong>{element.release_date}</p>}
+                      <p><strong>{this.props.langText.popularity} </strong>{element.popularity.toFixed(1)}</p>
                       <p><strong>{this.props.langText.voteCount} </strong>{element.vote_count}</p>
                       <p><strong>{this.props.langText.voteAverage}</strong>{element.vote_average}</p>
                     </div>

@@ -13,8 +13,8 @@ class App extends React.Component {
       datas: null,
       page: 1,
       langText: langText[0],
+      lang: langText[0],
       type: "movie",
-      lang: navigator.language,
       isMoreData: true
     };
     this.handleScroll = this.handleScroll.bind(this);
@@ -182,7 +182,7 @@ class App extends React.Component {
     return (
       <div>
         <Header changeHandler = {this.changeHandler} searchMovies = {this.searchMovies} filterText = {this.state.filterText} handleKeyPress = {this.handleKeyPress} sortingMovies = {this.sortingMovies} selectChange = {this.selectChange} lang = {this.state.lang} selectType = {this.selectType} type = {this.state.type}  langText = {this.state.langText}></Header>
-        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page} lang = {this.state.lang} langText = {this.state.langText} type = {this.state.type} isMoreData = {this.state.isMoreData}></Main>
+        <Main isData = {this.state.isData} datas = {this.state.datas} showDetails = {this.showDetails} page = {this.state.page} langText = {this.state.langText} type = {this.state.type} isMoreData = {this.state.isMoreData}></Main>
       </div>
     );
   }

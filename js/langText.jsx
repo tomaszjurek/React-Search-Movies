@@ -1,7 +1,7 @@
 export const langText = [
   {
     id: 0,
-    apiLang: navigator.language,
+    apiLang: "en-US",
     search: "Search",
     searchTitles: "Search title...",
     movie: "movies",
@@ -21,12 +21,13 @@ export const langText = [
     moreLoad: "Scroll to load more...",
     noMoreLoad: "There is nothing more to load...",
     welcome: "Start typing, choose what you want to search for and click Search or press Enter...",
+    noData: "No data available",
     imdb: "Click!"
   },
 
   {
     id: 1,
-    apiLang: navigator.language,
+    apiLang: "pl-PL",
     search: "Szukaj",
     searchTitles: "Szukaj tytułów...",
     movie: "filmy",
@@ -46,12 +47,13 @@ export const langText = [
     moreLoad: "Przewiń, aby załadować więcej ...",
     noMoreLoad: "Brak wyników...",
     welcome: "Wpisz czego szukasz, wybierz czy szukać wśród filmów lub seriali, a następnie kliknij Szukaj lub wciśnij Enter...",
+    noData: "Brak danych",
     imdb: "Kliknij!"
   },
 
   {
     id: 2,
-    apiLang: navigator.language,
+    apiLang: "de-DE",
     search: "Suche",
     searchTitles: "Suche titel...",
     movie: "Filme",
@@ -71,12 +73,13 @@ export const langText = [
     moreLoad: "Scrollen, um mehr zu laden ...",
     noMoreLoad: "Es gibt nichts mehr zu laden ...",
     welcome: "Starten Sie die Eingabe, wählen Sie, was Sie suchen möchten, und klicken Sie auf Suchen oder drücken Sie die Eingabetaste...",
+    noData: "Keine Daten verfügbar",
     imdb: "Klicken!"
   },
 
   {
     id: 3,
-    apiLang: navigator.language,
+    apiLang: "es-ES",
     search: "",
     searchTitles: "",
     movie: "",
@@ -95,6 +98,7 @@ export const langText = [
     status: "",
     moreLoad: "",
     noMoreLoad: "",
+    noData: "",
     imdb: ""
   }
 ]
