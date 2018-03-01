@@ -4,6 +4,7 @@ html, body {
   border: 0;
   width: 100%;
   position: relative;
+  font-size: 90%
 }
 
 body {
@@ -76,9 +77,9 @@ body {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 575px) {
   body {
-    font-size: 90%;
+    font-size: 70%;
     text-align:center;
     h1 {
       font-size: 1.5rem;
