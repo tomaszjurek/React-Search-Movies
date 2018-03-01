@@ -26,7 +26,7 @@ export const langText = [
 
   {
     id: 1,
-    apiLang: "pl-PL",
+    apiLang: navigator.language,
     search: "Szukaj",
     searchTitles: "Szukaj tytułów...",
     movie: "filmy",
@@ -51,7 +51,7 @@ export const langText = [
 
   {
     id: 2,
-    apiLang: "de-DE",
+    apiLang: navigator.language,
     search: "Suche",
     searchTitles: "Suche titel...",
     movie: "Filme",
@@ -76,7 +76,7 @@ export const langText = [
 
   {
     id: 3,
-    apiLang: "es-ES",
+    apiLang: navigator.language,
     search: "",
     searchTitles: "",
     movie: "",
