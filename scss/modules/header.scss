@@ -42,15 +42,3 @@
   width: 0%;
   z-index: 1000;
 }
-
-@media only screen and (max-width: 575px) {
-  body {
-    font-size: 70%;
-  }
-  .margin-top-small {
-	  margin-top: 10px;
-  }
-  .progress-container, .progress-bar {
-    height: 10px;
-  }
-}

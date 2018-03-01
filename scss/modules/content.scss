@@ -76,7 +76,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 900px) {
   body {
     font-size: 90%;
     text-align:center;
@@ -85,6 +85,12 @@ body {
     }
     .welcome-text {
       padding: 120px 20px 0 20px;
+    }
+    .margin-top-small {
+  	  margin-top: 10px;
+    }
+    .progress-container, .progress-bar {
+      height: 10px;
     }
   }
   .content {
